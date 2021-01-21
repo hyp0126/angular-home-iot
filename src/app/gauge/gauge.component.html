@@ -1,0 +1,42 @@
+<div class="jumbotron jumbotron-fluid header">
+    <div class="container pt-3 h-100">
+      <div class="row h-100 justify-content-center align-items-center" >
+            <div *ngFor="let data of GaugeData; let i = index" [attr.data-index]="i">
+                <h3>Room {{(i+1)}}</h3>
+                <div *ngIf="data.temperature">
+                    <rg-gauge-chart
+                        id='chart1'
+                        [canvasWidth]="canvasWidth"
+                        needleValue={{data.tempVal}}
+                        centralLabel=""
+                        [options]="optionsTemp"
+                        name="Temperature"
+                        bottomLabel={{data.temperature}}>
+                    </rg-gauge-chart>
+                </div>
+                <div *ngIf="data.brightness">
+                    <rg-gauge-chart
+                        id='chart2'
+                        [canvasWidth]="canvasWidth"
+                        needleValue={{data.humidity}}
+                        centralLabel=""
+                        [options]="optionsHum"
+                        name="Humidity"
+                        bottomLabel={{data.humidity}}>
+                    </rg-gauge-chart>
+                </div>
+                <div *ngIf="data.brightness">
+                    <rg-gauge-chart
+                        id='chart3'
+                        [canvasWidth]="canvasWidth"
+                        needleValue={{data.brightVal}}
+                        centralLabel=""
+                        [options]="optionsBright"
+                        name="Brightness"
+                        bottomLabel={{data.brightness}}>
+                    </rg-gauge-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
