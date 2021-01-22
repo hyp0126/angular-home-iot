@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/shared.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-chart',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chart.component.css']
 })
 export class ChartComponent implements OnInit {
+  tokenExist:boolean;
 
-  constructor() { }
+  constructor(private service:SharedService, private router: Router) { }
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('token') == null) {
+      this.router.navigate(['/login']);
+    };
   }
 
 }

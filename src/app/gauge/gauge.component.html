@@ -1,40 +1,52 @@
 <div class="jumbotron jumbotron-fluid header">
-    <div class="container pt-3 h-100">
-      <div class="row h-100 justify-content-center align-items-center" >
-            <div *ngFor="let data of GaugeData; let i = index" [attr.data-index]="i">
+    <div class="container pt-1 h-100">
+        <div class="d-flex flex-wrap justify-content-center align-content-center align-items-start">
+            <div *ngFor="let data of GaugeData; let i = index" [attr.data-index]="i" >
+                <div class="d-flex flex-column align-items-center">
                 <h3>Room {{(i+1)}}</h3>
-                <div *ngIf="data.temperature">
+                <div *ngIf="data.ledState !== ''" class="d-flex flex-column align-items-center">
+                    <h5>LED</h5>
+                    <div class="custom-control custom-switch">
+                        <input id="switch1+{{i}}" type="checkbox" class="custom-control-input" [checked]="data.ledVal" (click)="onClickLed(i+1)">
+                        <label class="custom-control-label" for="switch1+{{i}}">LED</label>
+                    </div>
+                </div>
+                <div *ngIf="data.temperature !== ''" class="d-flex flex-column align-items-center">
+                    <h5>Temperature</h5>
                     <rg-gauge-chart
-                        id='chart1'
+                        id="chart1+{{i}}"
                         [canvasWidth]="canvasWidth"
                         needleValue={{data.tempVal}}
                         centralLabel=""
                         [options]="optionsTemp"
-                        name="Temperature"
                         bottomLabel={{data.temperature}}>
                     </rg-gauge-chart>
                 </div>
-                <div *ngIf="data.brightness">
+                <br />
+                <div *ngIf="data.humidity !== ''" class="d-flex flex-column align-items-center">
+                    <h5>Humidity</h5>
                     <rg-gauge-chart
-                        id='chart2'
+                        id="chart2+{{i}}"
                         [canvasWidth]="canvasWidth"
                         needleValue={{data.humidity}}
                         centralLabel=""
                         [options]="optionsHum"
-                        name="Humidity"
                         bottomLabel={{data.humidity}}>
                     </rg-gauge-chart>
                 </div>
-                <div *ngIf="data.brightness">
+                <br />
+                <div *ngIf="data.brightness !== ''" class="d-flex flex-column align-items-center">
+                    <h5>Brightness</h5>
                     <rg-gauge-chart
-                        id='chart3'
+                        id="chart3+{{i}}"
                         [canvasWidth]="canvasWidth"
                         needleValue={{data.brightVal}}
                         centralLabel=""
                         [options]="optionsBright"
-                        name="Brightness"
                         bottomLabel={{data.brightness}}>
                     </rg-gauge-chart>
+                </div>
+                <br />
                 </div>
             </div>
         </div>

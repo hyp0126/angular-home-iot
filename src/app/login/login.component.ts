@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -7,11 +8,25 @@ import { SharedService } from 'src/app/shared.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  Username:string;
+  Password:string;
+  tokenExist:boolean;
 
-  constructor(private service:SharedService) { }
+  constructor(private service:SharedService, private router: Router) { }
 
   ngOnInit(): void {
-    this.service.login('user', '1234');
+    if (sessionStorage.getItem('token') == null) {
+      this.tokenExist = false;
+    } else {
+      this.tokenExist = true;
+    };
+    console.log(sessionStorage.getItem('token'));
   }
 
+  login() {
+    this.service.login(this.Username, this.Password).subscribe((data:any) => {
+      sessionStorage.setItem('token', data.token);
+      this.router.navigate(['/gauge']);
+    });;
+  }
 }

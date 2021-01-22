@@ -6,25 +6,30 @@ import { Observable, VirtualTimeScheduler } from 'rxjs';
   providedIn: 'root'
 })
 export class SharedService {
-  token:string;
 
   readonly APIUrl="http://localhost:8080/api";
 
   constructor(private http:HttpClient) { }
 
-  getRoomData(){
-    return this.http.post(this.APIUrl+'/roomData',{token: this.token});
+  getRoomData() {
+    return this.http.post(this.APIUrl+'/roomData',{token: sessionStorage.getItem('token')});
   }
 
-  login(username:string, password:string) {
-    return this.http.post(this.APIUrl+'/login',{username, password})
+  toggleLed(id:string) {
+    return this.http.post(this.APIUrl+'/led',{id, token: sessionStorage.getItem('token')})
       .subscribe((data:any) => {
-        this.token = data.token;
       });
   }
 
+  login(username:string, password:string) {
+    return this.http.post(this.APIUrl+'/login',{username, password})
+  }
+
   logout() {
-    this.token='';
-    return this.http.post(this.APIUrl+'/logout',{token: this.token});
+    sessionStorage.clear();
+    return this.http.post(this.APIUrl+'/logout',{token: sessionStorage.getItem('token')})
+      .subscribe((data:any) => {
+        sessionStorage.clear();
+      });
   }
 }
