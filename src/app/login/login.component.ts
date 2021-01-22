@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
     } else {
       this.tokenExist = true;
     };
-    console.log(sessionStorage.getItem('token'));
   }
 
   login() {

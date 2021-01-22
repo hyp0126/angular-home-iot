@@ -84,7 +84,7 @@ export class ChartComponent implements OnInit {
 			animationEnabled: true,
 			theme: "light2", // "light1", "dark1", "dark2"
 			title:{
-				text: `Room Temperature (${this.selectedDate.getMonth()-1}/${this.selectedDate.getDate()}/${this.selectedDate.getFullYear()})`
+				text: `Room Temperature (${this.selectedDate.getMonth()+1}/${this.selectedDate.getDate()}/${this.selectedDate.getFullYear()})`
 			},
 			axisY: {
                 title: "Degree",

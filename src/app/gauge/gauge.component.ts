@@ -31,7 +31,7 @@ export class GaugeComponent implements OnInit, OnDestroy {
     hasNeedle: true,
     needleColor: 'black',
     needleUpdateSpeed: 1,
-    arcColors: ['rgb(255,84,84)','rgb(61,204,91)','rgb(239,214,19)'],
+    arcColors: ['dodgerblue','lawngreen','orangered'],
     arcDelimiters: [20,70],
     rangeLabel: ['0', '50'],
     needleStartValue: 50,
@@ -41,9 +41,10 @@ export class GaugeComponent implements OnInit, OnDestroy {
     hasNeedle: true,
     needleColor: 'black',
     needleUpdateSpeed: 1,
-    arcColors: ['rgb(255,84,84)','rgb(61,204,91)','rgb(239,214,19)'],
+    arcColors: ['lightcyan','deepskyblue','dodgerblue'],
     arcDelimiters: [20,80],
     rangeLabel: ['0', '100'],
+    rangeLabelFontSize: 20,
     needleStartValue: 50,
   }
 
@@ -51,8 +52,8 @@ export class GaugeComponent implements OnInit, OnDestroy {
     hasNeedle: true,
     needleColor: 'black',
     needleUpdateSpeed: 1,
-    arcColors: ['rgb(255,84,84)','rgb(61,204,91)','rgb(239,214,19)'],
-    arcDelimiters: [20,80],
+    arcColors: ['dark-grey','gray','white'],
+    arcDelimiters: [30,70],
     rangeLabel: ['0', '1024'],
     needleStartValue: 50,
   }

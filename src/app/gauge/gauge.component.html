@@ -1,9 +1,9 @@
-<div class="jumbotron jumbotron-fluid header">
+<div class="jumbotron jumbotron-fluid header p-2">
     <div class="container pt-1 h-100">
         <div class="d-flex flex-wrap justify-content-center align-content-center align-items-start">
             <div *ngFor="let data of GaugeData; let i = index" [attr.data-index]="i" >
                 <div class="d-flex flex-column align-items-center">
-                <h3>Room {{(i+1)}}</h3>
+                <h4>Room {{(i+1)}}</h4>
                 <div *ngIf="data.ledState !== ''" class="d-flex flex-column align-items-center">
                     <h5>LED</h5>
                     <div class="custom-control custom-switch">
@@ -11,6 +11,7 @@
                         <label class="custom-control-label" for="switch1+{{i}}">LED</label>
                     </div>
                 </div>
+                <br />
                 <div *ngIf="data.temperature !== ''" class="d-flex flex-column align-items-center">
                     <h5>Temperature</h5>
                     <rg-gauge-chart
